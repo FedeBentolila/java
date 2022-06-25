@@ -3,51 +3,70 @@
 //Variables
 let nombre;
 let opcion;
+let opcion2;
 let insumo;
-let inyector = 100
-let ansacaliente = 200
-let clipx =  300
+let total=0;
+
+
+//Class
+
+class Producto {
+  constructor (nombre, precio){
+    this.nombre = nombre;
+    this.precio = parseFloat(precio);
+  }
+}
+
+
+//Arrays
+
+const productos = [];
+productos.push(new Producto("inyector", "100"))
+productos.push(new Producto("ansacaliente", "200"))
+productos.push(new Producto("clipx", "300"))
+
+const carrito = [];
 
 
 //Funciones
+
 function saludo(){
     alert ("Bienvenido " + nombre + " al Eshop de insumos médicos para endoscopía digestiva")
 };
 
 function compra()  {
-    insumo = prompt( "elija uno de nuestros insumos \n 1: Inyector  \n 2: Ansa caliente \n 3: clip hemostatico"
-    );
   
-    if (insumo == 1) {
+    if (opcion2 == 1) {
       alert(" elegiste Inyecctor para tu compra");
-    } else if (insumo == 2) {
+      carrito.push(new Producto("inyector", "100"));
+    } else if (opcion2 == 2) {
       alert(" elegiste Ansa caliente para tu compra");
-    } else if (insumo == 3) {
+      carrito.push(new Producto("ansa caliente", "200"));
+    } else if (opcion2 == 3) {
       alert(" elegiste clip hemostatico para tu compra");
+      carrito.push(new Producto("clip hemostatico", "300"));
     }
    
-    opcion = prompt(
-      "vuelva a ingresar una opcion \n 2: mostrar precios finales  \n 3: terminar"
+    opcion2 = prompt(
+      "Desea comprar otro artículo?: 1)Inyector, 2) ansa caliente 3) clip hemostatico 4) finalizar compra"
     );
   };
 
 function finalizarcompra() {
-    if (insumo == 1) {
-      alert(
-        "usted eligio inyector endoscopico por un monto  final de " +
-          inyector * 1.21
-      );
-    } else if (insumo == 2) {
-      alert(
-        "usted eligio ansa caliente  por un monto  final de " +
-          ansacaliente * 1.21
-      );
-    } else if (insumo == 3) {
-      alert(
-        "usted eligio clip hemostatico por un monto  final de " +
-          clipx * 1.21
-      );
-    } 
+    alert("Ud a elegido los siguientes productos")
+    for (let index=0; index<carrito.length; index ++){
+      alert(carrito[index].nombre)
+    }  
+
+    for (let index=0; index<carrito.length; index ++){
+      total=carrito[index].precio + total;
+      
+
+    }  
+
+    alert("El total con IVA de los productos seleccionados es dólares " + (total= total * 1.21))
+
+    
   }; 
 
 
@@ -60,24 +79,38 @@ while (nombre == null ||  nombre == "") {
 
 
 saludo ();
-opcion = prompt("A continuación ingrese una opción: 1: comprar producto, 2: finalizar compra, 3: terminar");
-while (opcion == null ||  opcion == "") {
+opcion = prompt("A continuación ingrese una opción: 1: ver productos, 2: terminar");
+while (opcion != "1" && opcion != "2") {
   alert ("debe ingresar una opcion para continuar")
-  opcion = prompt("Ingrese una opcion válida: 1: comprar producto, 2: finalizar compra, 3: terminar")
+  opcion = prompt("Ingrese una opcion válida: 1: ver productos, 2 terminar")
     }
 
-while (opcion != 3) {
-            if (opcion == 1) {
-            compra();
-            } 
-            
-            if (opcion == 2) {
+if (opcion==1) {
+  alert ("1) inyector endoscópico 100 dólares, 2) Ansa caliente 200 dólares, 3) clip hemostático 300 dólares, precios no incluyen IVA");
+    opcion2= prompt("Que artículo desea comprar 1)Inyector, 2) ansa caliente 3) clip hemostatico 4) finalizar compra")
+      while (opcion2 != "1" && opcion2 != "2" && opcion2 != "3" && opcion2 != "4") {
+        alert ("debe ingresar una opcion para continuar")
+          opcion2 = prompt("Ingrese una opcion válida: 1)Inyector, 2) ansa caliente 3) clip hemostatico 4) finalizar compra")
+          }
+
+      while (opcion2 !=4){
+        compra();
+        } 
+
+        if (opcion2 == 4) {
             finalizarcompra();
-            opcion = 3;
             }
-    }
+     
+} else if (opcion==2){
+  alert ("Muchas gracias por su visita")
+}
 
-alert ("Muchas gracias")
+
+
+
+
+
+
         
 
 
