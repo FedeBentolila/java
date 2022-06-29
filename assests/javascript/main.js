@@ -54,15 +54,22 @@ function compra()  {
 
 function finalizarcompra() {
     alert("Ud a elegido los siguientes productos")
-    for (let index=0; index<carrito.length; index ++){
+   /*  for (let index=0; index<carrito.length; index ++){
       alert(carrito[index].nombre)
     }  
+    Aca cambio esta ùltima funciòn por un For each para cumplir con el objetivo del desafìo*/
 
-    for (let index=0; index<carrito.length; index ++){
+    carrito.forEach((num)=>{
+      alert(num.nombre)
+    } )
+
+
+   /*  for (let index=0; index<carrito.length; index ++){
       total=carrito[index].precio + total;
       
+    }  Aca para reemplazar uso un REDUCE */
 
-    }  
+    total= carrito.reduce((acc, el)=>acc + el.precio,0)
 
     alert("El total con IVA de los productos seleccionados es dólares " + (total= total * 1.21))
 
