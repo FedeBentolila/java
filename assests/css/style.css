@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .bodyBT {
+    background-color: whitesmoke;
+  }
+  
+  .bodyBT .redesydireccionBT {
+    background-color: #474a49;
+    padding: 10px;
+  }
+  
+  .bodyBT .redesydireccionBT .direccionBT {
+    color: white;
+    padding: 10px;
+  }
+  
+  .bodyBT .redesydireccionBT a:hover {
+    background-color: rgba(228, 241, 241, 0.735);
+    border-radius: 20px;
+  }
+  
+  .bodyBT .redesydireccionBT a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .bodyBT .logoynavBT {
+    margin: 8px;
+  }
+  
+  .bodyBT .logoynavBT a:hover {
+    background-color: rgba(228, 241, 241, 0.735);
+    border-radius: 20px;
+  }
+  
+  .bodyBT .logoynavBT a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .bodyBT .logoynavBT .textoh2BT {
+    color: #3f3f3f;
+    margin: 20px;
+  }
+  
+  .bodyBT .logoynavBT .navbar {
+    border-radius: 10px;
+  }
+
+  .bodyBT .productosBT {
+    background-color: #3f3f3f;
+    color: whitesmoke;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    width: auto;
+  }
+
+  .bodyBT .pieBT {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#474a49), to(#1f2020));
+    background-image: linear-gradient(to bottom, #474a49, #1f2020);
+    color: whitesmoke;
+    margin-top: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .bodyBT .pieBT .tarjetafooterBT {
+    margin-top: 30px;
+  }
+
+.card{ 
+  width: 18rem;
+  margin-top: 20px;
+}
+
+.btn{
+  background-color: rgb(99, 205, 205);
+  border-color: rgb(99, 205, 205);
+}
+
+.bodyBT .formulario {
+  padding: 10px;
+  margin-top: 50px;
+}
+
+.bodyBT .formulario ul {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: medium;
+  text-align: center;
+  list-style: none;
+  background-color: gray;
+  color: whitesmoke;
+  padding: 10px;
+  border-radius: 5%;
+}
+
+.bodyBT .formulario ul li {
+  margin-top: 10px;
+}

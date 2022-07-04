@@ -5,10 +5,117 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda online para insumos de endoscopia digestiva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="./assests/css/style.css">
 </head>
-<body>
+<body class="bodyBT container-fluid">
+    <header class="redesydireccionBT row justify-content-center align-items-center text-center">
+        <div class="col-xs-12 col-md-1">
+        <a href=""> <i class="fa-brands fa-facebook-square"></i></a>
+        <a href=""> <i class="fa-brands fa-instagram-square"></i></a>
+        <a href=""> <i class="fa-solid fa-location-dot"></i></a>
+        </div>
+        <div class="col-xs-12 col-md-8 direccionBT">
+            <h5> Concordia 2314, Villa del Parque, Ciudad de Buenos Aires 011 3591-XXXX</h5>
+        </div>
+    </header>
+
+    <div class="row logoynavBT justify-content-evenly align-items-center text-center">
+        
+        <div class="col-xs-12 col-md-2 indegalogoBT">
+               <a href=""> <img src="./assests/img/logoendoscopia.png" width="200" alt="logo"> </a>
+        </div>
+        
+        <div class="col-xs-12 col-md-5 textoh2BT">
+           <h3>Insumos de Endoscopia Digestiva</h3>
+        </div>
+        
+        <div class="col-xs-12 col-md-4">
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(99, 205, 205); font-size: 20px;">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="">Inicio</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="" style="color: white;" href="#">Productos</a>
+                          </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="" style="color: white;" href="#">Contacto</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="" style="color: white;" href="#">Carrito</a>
+                      </li>
+                    </ul>
+                    
+                  </div>
+                </div>
+              </nav>
+        </div>
+
+    </div>
+
+    <div class="row col-xs-12 col-md-12 justify-content-evenly align-items-center text-center productosBT">
+        <h4 class="">Principales Productos en Venta</h4>
+    </div>
+
+    <div id="productos" class="row justify-content-evenly align-items-center text-center tarjetasBT"></div>
+
+    <br>
+
+    <form class="row justify-content-center align-items-center text-center formulario">
+      <ul class="col-xs-12 col-md-4 listaformulario">
+          <li>
+            <label for="name">Ingrese su nombre para poder comprar los insumos:</label>
+            <input type="text" id="user_name">
+          </li>
+          <li>
+              <button type="button" onclick="getValueInput()">
+              Enviar
+              </button>
+          </li>
+      </ul>
+    
+    <footer class="row justify-content-evenly align-items-center text-center pieBT">
+        <section class="col-xs-12 col-md-3 tarjetafooterBT"> 
+            <h3>Contáctenos</h3>
+            <br>
+            <p>
+                Email: email@mail.com
+                <br>
+                tel 011 3591-XXXX
+                <br>
+                Ubicación:
+                <br> 
+                Concordia 2314
+                <bR>
+                Villa del Parque
+                <br>
+                Ciudad de Buenos Aires</p>
+        </section>
+
+        <section class="col-xs-12 col-md-3 tarjetafooterBT"> 
+            <h3>Horarios</h3>
+            <br>
+            <p>
+                Lunes a Viernes
+                <br>
+                08:00 h a 18:30 h</p>
+        </section>
+
+        <section class="col-xs-12 col-md-3 tarjetafooterBT"> 
+            <h3>Acerca nuestro</h3>
+            <br>
+            <p> Lorem ipsum dolor sit amet. </p>
+        </section>
+
+    </footer>
     
     <script src="./assests/javascript/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    
 </body>
 </html>

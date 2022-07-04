@@ -27,6 +27,27 @@ productos.push(new Producto("clipx", "300"))
 
 const carrito = [];
 
+const productosobjetos = [
+  {id:1, nombre: "Inyector", precio: 100, descripcion: "Inyector descartable para endosocopía", imgurl:"./assests/img/aguja-de-escleroterapia.jpg"},
+  {id:2, nombre: "Ansa Caliente", precio: 200, descripcion: "Ansa caliente descartable para endosocopía", imgurl:"./assests/img/ansacaliente.jpg"},
+  {id:3, nombre: "Clip endoscópico", precio: 300, descripcion: "Clip descartable para endosocopía", imgurl:"./assests/img/clip.jpg"},
+]
+
+
+//Creador de tarjetas
+for (const iterador of productosobjetos) {
+  let contenedor = document.createElement("div");
+  contenedor.classList.add("card", "col-xs-12", "col-md-4",)
+  contenedor.innerHTML = 
+  ` <img src="${iterador.imgurl}" class="card-img-top" >
+  <div class="card-body ${iterador.id}">
+    <h5 class="card-title"> ${iterador.nombre}</h5>
+    <p class="card-text">${iterador.descripcion}</p>
+    <a href="#" class="btn btn-primary">Comprar</a>
+  </div> `;
+  document.getElementById("productos").appendChild(contenedor)
+}
+
 
 //Funciones
 
@@ -78,39 +99,50 @@ function finalizarcompra() {
 
 
 //Main
-nombre = prompt("Buen dìa ingrese su nombre para continuar");
-while (nombre == null ||  nombre == "") {
-  alert ("debe ingresar su nombre para continuar")
-  nombre = prompt("Buen dìa ingrese su nombre para continuar")
-}
 
+//Agreguè un formulario con un evento para escribir el nombre y asi comenzar con los alerts y prompts
 
-saludo ();
-opcion = prompt("A continuación ingrese una opción: 1: ver productos, 2: terminar");
-while (opcion != "1" && opcion != "2") {
-  alert ("debe ingresar una opcion para continuar")
-  opcion = prompt("Ingrese una opcion válida: 1: ver productos, 2 terminar")
-    }
+const getValueInput = () =>{
+  nombre = document.getElementById("user_name").value; 
 
-if (opcion==1) {
-  alert ("1) inyector endoscópico 100 dólares, 2) Ansa caliente 200 dólares, 3) clip hemostático 300 dólares, precios no incluyen IVA");
-    opcion2= prompt("Que artículo desea comprar 1)Inyector, 2) ansa caliente 3) clip hemostatico 4) finalizar compra")
-      while (opcion2 != "1" && opcion2 != "2" && opcion2 != "3" && opcion2 != "4") {
-        alert ("debe ingresar una opcion para continuar")
-          opcion2 = prompt("Ingrese una opcion válida: 1)Inyector, 2) ansa caliente 3) clip hemostatico 4) finalizar compra")
-          }
-
-      while (opcion2 !=4){
-        compra();
-        } 
-
-        if (opcion2 == 4) {
-            finalizarcompra();
+  while (nombre == null ||  nombre == "") {
+    alert ("debe ingresar su nombre para continuar")
+    nombre = prompt("Buen dìa ingrese su nombre para continuar")
+  }
+  
+  
+  saludo ();
+  opcion = prompt("A continuación ingrese una opción: 1: ver productos, 2: terminar");
+  while (opcion != "1" && opcion != "2") {
+    alert ("debe ingresar una opcion para continuar")
+    opcion = prompt("Ingrese una opcion válida: 1: ver productos, 2 terminar")
+      }
+  
+  if (opcion==1) {
+    alert ("1) inyector endoscópico 100 dólares, 2) Ansa caliente 200 dólares, 3) clip hemostático 300 dólares, precios no incluyen IVA");
+      opcion2= prompt("Que artículo desea comprar 1)Inyector, 2) ansa caliente 3) clip hemostatico 4) finalizar compra")
+        while (opcion2 != "1" && opcion2 != "2" && opcion2 != "3" && opcion2 != "4") {
+          alert ("debe ingresar una opcion para continuar")
+            opcion2 = prompt("Ingrese una opcion válida: 1)Inyector, 2) ansa caliente 3) clip hemostatico 4) finalizar compra")
             }
-     
-} else if (opcion==2){
-  alert ("Muchas gracias por su visita")
+  
+        while (opcion2 !=4){
+          compra();
+          } 
+  
+          if (opcion2 == 4) {
+              finalizarcompra();
+              }
+       
+  } else if (opcion==2){
+    alert ("Muchas gracias por su visita")
+  }
+  
+  
 }
+
+
+
 
 
 
