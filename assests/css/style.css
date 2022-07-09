@@ -78,27 +78,24 @@
   margin-top: 20px;
 }
 
+.cardcarrito{
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
 .btn{
   background-color: rgb(99, 205, 205);
   border-color: rgb(99, 205, 205);
 }
 
-.bodyBT .formulario {
-  padding: 10px;
-  margin-top: 50px;
+.cardcarrito{
+  display: flex;
+  flex-direction: row;
+  width: auto;
 }
 
-.bodyBT .formulario ul {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: medium;
-  text-align: center;
-  list-style: none;
-  background-color: gray;
-  color: whitesmoke;
-  padding: 10px;
-  border-radius: 5%;
+#trash1, #trash2, #trash3{
+  cursor: pointer;
 }
 
-.bodyBT .formulario ul li {
-  margin-top: 10px;
-}
