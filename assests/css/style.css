@@ -95,7 +95,7 @@
   width: auto;
 }
 
-#trash1, #trash2, #trash3{
+.fa-trash-can{
   cursor: pointer;
 }
 

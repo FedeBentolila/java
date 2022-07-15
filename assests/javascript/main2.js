@@ -41,8 +41,6 @@ class Producto {
   }
 
 
-////////////////////////////////////////////
-
   if (almacenados!=null) {
 
   for (const iterador2 of almacenados){
@@ -137,7 +135,15 @@ class Producto {
 
 
   //////////////////////////////////////////
-        
+
+
+  //Chequeo si esta el DIV productos para que en checkoout.html no intente crear las tarjetas de productos y tire error
+  
+  
+  const testData2 = !!document.getElementById("productos")
+
+  if (testData2==true) {
+    
   //Creador de tarjetas de acuerdo al array de productos
   for (const iterador of productos) {
     let contenedor = document.createElement("div");
@@ -250,7 +256,7 @@ class Producto {
   }
 
 
-  
+}
   
   
   
