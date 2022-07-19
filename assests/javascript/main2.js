@@ -60,6 +60,8 @@ class Producto {
     let cantidaddelproducto2= 0
 
     if (testData2==false) {
+     
+     
       cantidaddelproducto2= 1
 
       let contenedor = document.createElement("div");
