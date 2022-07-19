@@ -2,6 +2,7 @@
 
 let guardarlocal= (clave, valor) =>{localStorage.setItem(clave, valor) };
 
+
 //Constructor de productos en venta
 
 class Producto {
@@ -48,27 +49,33 @@ class Producto {
   }
 
   for (const iterador3 of carrito){
-    const testData2 = !!document.getElementById(iterador3.nombre)  
+
+
+    //Desestructuro el objeto iterador 3 del carrito para no tener que estar escribiendo ejemplo iterador3.nombre
+    
+    const{id, nombre, precio, descripcion, imgurl}= iterador3
+
+    const testData2 = !!document.getElementById(nombre)  
 
     let cantidaddelproducto2= 0
 
     if (testData2==false) {
-
+      cantidaddelproducto2= 1
 
       let contenedor = document.createElement("div");
-      contenedor.setAttribute("id",iterador3.nombre)
+      contenedor.setAttribute("id",nombre)
       contenedor.classList.add("card", "mb-3", "cardcarrito")
       contenedor.innerHTML = 
       ` <div class="row g-0 justify-content-center align-items-center">
       <div class="col-md-4">
-        <img src="${iterador3.imgurl}" class="img-fluid rounded-start" alt="...">
+        <img src="${imgurl}" class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-4">
       <div class="card-body">
-      <h5 class="card-title">${iterador3.nombre}</h5>
-      <p id ="precio${iterador3.nombre}" class="card-text">Precio ${iterador3.precio} dólares</p>
-      <p id="cantidad${iterador3.nombre}" class="card-text">Cantidad 1</p>
-      <i id ="trash${iterador3.nombre}" class="fa-solid fa-trash-can"></i>
+      <h5 class="card-title">${nombre}</h5>
+      <p id ="precio${nombre}" class="card-text">Precio ${precio} dólares</p>
+      <p id="cantidad${nombre}" class="card-text">Cantidad 1</p>
+      <i id ="trash${nombre}" class="fa-solid fa-trash-can"></i>
       </div>
       </div>
       </div> `;
@@ -78,24 +85,28 @@ class Producto {
 
     }else{
       for (const obj of carrito) {
-        if (obj.nombre == iterador3.nombre) cantidaddelproducto2++;
+        
+        //Operador ternario
+        
+        obj.nombre==nombre? cantidaddelproducto2++ : cantidaddelproducto2
+        //if (obj.nombre == iterador3.nombre) cantidaddelproducto2++;
       }  
       console.log(cantidaddelproducto2)
       console.log(carrito)
      
-      let precioproducto= document.getElementById("precio"+iterador3.nombre)
-      precioproducto.innerText=("Precio " + (iterador3.precio * cantidaddelproducto2) + " dólares")
+      let precioproducto= document.getElementById("precio"+nombre)
+      precioproducto.innerText=("Precio " + (precio * cantidaddelproducto2) + " dólares")
       
-      let cantidaddelproductoenhtml= document.getElementById("cantidad"+iterador3.nombre)
+      let cantidaddelproductoenhtml= document.getElementById("cantidad"+nombre)
       cantidaddelproductoenhtml.innerText=("Cantidad " + cantidaddelproducto2)
 
     }
 
-    let= botontrash= document.getElementById("trash"+iterador3.nombre)
+    let= botontrash= document.getElementById("trash"+nombre)
     botontrash.onclick=()=>{
       console.log(cantidaddelproducto2)
     if (cantidaddelproducto2==1) {
-      carrito= carrito.filter(data=>data.id !=iterador3.nombre+cantidaddelproducto2);
+      carrito= carrito.filter(data=>data.id !=nombre+cantidaddelproducto2);
       
       
       //Quito el local storage
@@ -104,23 +115,23 @@ class Producto {
       guardarlocal("storagecarrito", JSON.stringify(carrito));
   
       console.log(carrito)
-      let element= document.getElementById(iterador3.nombre)
+      let element= document.getElementById(nombre)
       element.remove();
       cantidaddelproducto2=0
     }else{
-      carrito= carrito.filter(data=>data.id !=iterador3.nombre+cantidaddelproducto2);
+      carrito= carrito.filter(data=>data.id !=nombre+cantidaddelproducto2);
       
-      cantidaddelproducto2 = cantidaddelproducto2-1
+      cantidaddelproducto2--
       //Quito el local storage
       localStorage.clear()
       //Actualizo el local storage
       guardarlocal("storagecarrito", JSON.stringify(carrito));
   
       console.log(carrito)
-      let precioproducto= document.getElementById("precio"+iterador3.nombre)
-      precioproducto.innerText=("Precio " + (iterador3.precio * cantidaddelproducto2) + " dólares")
+      let precioproducto= document.getElementById("precio"+nombre)
+      precioproducto.innerText=("Precio " + (precio * cantidaddelproducto2) + " dólares")
       
-      let cantidaddelproductoenhtml= document.getElementById("cantidad"+iterador3.nombre)
+      let cantidaddelproductoenhtml= document.getElementById("cantidad"+nombre)
       cantidaddelproductoenhtml.innerText=("Cantidad " + cantidaddelproducto2)
     }
   
@@ -196,7 +207,15 @@ class Producto {
       
     }else{
       for (const obj of carrito) {
-        if (obj.nombre == iterador.nombre) cantidaddelproducto++;
+
+        //Operador AND
+        
+        obj.nombre==iterador.nombre && cantidaddelproducto++
+
+        //obj.nombre==iterador.nombre? cantidaddelproducto++ : cantidaddelproducto
+
+        //if (obj.nombre == iterador.nombre) cantidaddelproducto++;
+
       }  
       console.log(cantidaddelproducto)
       carrito.push(new Producto(iterador.nombre+cantidaddelproducto,iterador.nombre,iterador.precio,iterador.descripcion,iterador.imgurl))
@@ -228,12 +247,12 @@ class Producto {
   
       console.log(carrito)
       let element= document.getElementById(iterador.nombre)
-      element.remove();
       cantidaddelproducto=0
+      element.remove();
     }else{
       carrito= carrito.filter(data=>data.id !=iterador.nombre+cantidaddelproducto);
       
-      cantidaddelproducto = cantidaddelproducto-1
+      cantidaddelproducto--
       //Quito el local storage
       localStorage.clear()
       //Actualizo el local storage
@@ -257,6 +276,39 @@ class Producto {
 
 
 }
+
+
+
+const testData3 = !!document.getElementById("finalizarcompra")
+
+if (testData3==true) {
   
+
+let= botonfinalizarcompra= document.getElementById("finalizarcompra")
+    
+    botonfinalizarcompra.onclick=()=>{
+      arraydeprecios = []
+      
+      for (const i of carrito) {
+        arraydeprecios.push(i.precio)
+      }
+
+      console.log(arraydeprecios)
+
+      //rest parameters para calcular el total de la compra
+
+      function fun(...input){
+        let sum = 0;
+        for(let i of input){
+            sum+=i;
+        }
+        return sum;
+    }
+
+    alert("Muchas gracias por su compra, el total es " + fun(...arraydeprecios)+ " dólares")
+
+     
+    }
   
+  }
   
