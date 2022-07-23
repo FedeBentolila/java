@@ -1,6 +1,30 @@
 //variables
 
 let guardarlocal= (clave, valor) =>{localStorage.setItem(clave, valor) };
+const testData3 = !!document.getElementById("comprar")
+const botoncomprar= document.getElementById("comprar")
+let= botonfinalizarcompra= document.getElementById("finalizarcompra")
+const testData4 = !!document.getElementById("finalizarcompra")
+
+//funciones
+function displaybotoncomprar(){
+  if (carrito.length==0) {
+    botoncomprar.classList.add('d-none')
+    
+  } else {
+    botoncomprar.classList.remove('d-none')
+  }
+}
+
+function displayfinalizarcomprar(){
+  if (carrito.length==0) {
+    botonfinalizarcompra.classList.add('d-none')
+    
+  } else {
+    botonfinalizarcompra.classList.remove('d-none')
+  }
+}
+
 
 
 //Constructor de productos en venta
@@ -43,6 +67,11 @@ class Producto {
 
 
   if (almacenados!=null) {
+
+    if (testData3==true) {
+      displaybotoncomprar()
+      
+    }
 
   for (const iterador2 of almacenados){
     carrito.push(new Producto2(iterador2)) 
@@ -120,6 +149,21 @@ class Producto {
       let element= document.getElementById(nombre)
       element.remove();
       cantidaddelproducto2=0
+
+      if (testData3==true) {
+        displaybotoncomprar()
+        
+      }
+
+      if(testData4==true){
+        displayfinalizarcomprar ()
+      
+      
+      }
+
+      
+
+
     }else{
       carrito= carrito.filter(data=>data.id !=nombre+cantidaddelproducto2);
       
@@ -135,6 +179,17 @@ class Producto {
       
       let cantidaddelproductoenhtml= document.getElementById("cantidad"+nombre)
       cantidaddelproductoenhtml.innerText=("Cantidad " + cantidaddelproducto2)
+
+      if (testData3==true) {
+        displaybotoncomprar()
+        
+      }
+
+      if(testData4==true){
+        displayfinalizarcomprar ()
+      
+      
+      }
     }
   
   }
@@ -251,6 +306,16 @@ class Producto {
       let element= document.getElementById(iterador.nombre)
       cantidaddelproducto=0
       element.remove();
+
+      if (testData3==true) {
+        displaybotoncomprar()
+        
+      }
+
+      if(testData4==true){
+        displayfinalizarcomprar ()
+    
+      }
     }else{
       carrito= carrito.filter(data=>data.id !=iterador.nombre+cantidaddelproducto);
       
@@ -266,11 +331,31 @@ class Producto {
       
       let cantidaddelproductoenhtml= document.getElementById("cantidad"+iterador.nombre)
       cantidaddelproductoenhtml.innerText=("Cantidad " + cantidaddelproducto)
+
+      if (testData3==true) {
+        displaybotoncomprar()
+        
+      }
+
+      if(testData4==true){
+        displayfinalizarcomprar ()
+      
+      
+      }
     }
   
   }
 
+  if (testData3==true) {
+    displaybotoncomprar()
+    
+  }
 
+  if(testData4==true){
+    displayfinalizarcomprar ()
+  
+  
+  }
 
   }
 
@@ -281,21 +366,54 @@ class Producto {
 
 
 
-const testData3 = !!document.getElementById("finalizarcompra")
-
 if (testData3==true) {
+  displaybotoncomprar()
   
+}
 
-let= botonfinalizarcompra= document.getElementById("finalizarcompra")
+if(testData4==true){
+  displayfinalizarcomprar ()
+
+
+}
+
+
+
+
+
+if (testData4==true) {
     
     botonfinalizarcompra.onclick=()=>{
+
+      let fnombre= document.getElementById("fnombre").value
+      let fapellido= document.getElementById("fapellido").value
+      let ftelefono= document.getElementById("ftelefono").value
+      let femail= document.getElementById("femail").value
+      let fciudad= document.getElementById("fciudad").value
+      let fprovincia= document.getElementById("fprovincia").value
+      let fcodigopostal= document.getElementById("fcodigopostal").value
+      let ftarjeta= document.getElementById("ftarjeta").value
+      let fnumerotarjeta= document.getElementById("fnumerotarjeta").value
+      let fvencimiento= document.getElementById("fvencimiento").value
+      let fccv= document.getElementById("fccv").value
       arraydeprecios = []
+
+      let fnombrecolor= document.getElementById("fnombre")
+      let fapellidocolor= document.getElementById("fapellido")
+      let ftelefonocolor= document.getElementById("ftelefono")
+      let femailcolor= document.getElementById("femail")
+      let fciudadcolor= document.getElementById("fciudad")
+      let fprovinciacolor= document.getElementById("fprovincia")
+      let fcodigopostalcolor= document.getElementById("fcodigopostal")
+      let ftarjetacolor= document.getElementById("ftarjeta")
+      let fnumerotarjetacolor= document.getElementById("fnumerotarjeta")
+      let fvencimientocolor= document.getElementById("fvencimiento")
+      let fccvcolor= document.getElementById("fccv")
+
       
       for (const i of carrito) {
         arraydeprecios.push(i.precio)
       }
-
-      console.log(arraydeprecios)
 
       //rest parameters para calcular el total de la compra
 
@@ -307,10 +425,114 @@ let= botonfinalizarcompra= document.getElementById("finalizarcompra")
         return sum;
     }
 
-    alert("Muchas gracias por su compra, el total es " + fun(...arraydeprecios)+ " dólares")
+    //Validación del formulario y alert final de compra 
 
+    if (fnombre=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      fnombrecolor.style.backgroundColor="red"
+        
+      
+    }
+    
+    if (fapellido=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      fapellidocolor.style.backgroundColor="red"
+    
+    } 
+
+    if (ftelefono=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      ftelefonocolor.style.backgroundColor="red"
+    
+    } 
+
+
+    if (femail=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      femailcolor.style.backgroundColor="red"
+    
+    } 
+
+
+    if (fciudad=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      fciudadcolor.style.backgroundColor="red"
+    
+    } 
+
+    if (fprovincia=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      fprovinciacolor.style.backgroundColor="red"
+    
+    } 
+
+
+    if (fcodigopostal=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      fcodigopostalcolor.style.backgroundColor="red"
+    
+    } 
+
+    if (ftarjeta=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      ftarjetacolor.style.backgroundColor="red"
+    
+    } 
+
+
+    if (fnumerotarjeta=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      fnumerotarjetacolor.style.backgroundColor="red"
+    
+    } 
+
+    if (fvencimiento=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      fvencimientocolor.style.backgroundColor="red"
+    
+    } 
+
+
+
+    if (fccv=="") {
+
+      swal("Atención", "Existen campos incompletos", "error");
+      fccvcolor.style.backgroundColor="red"
+    
+    } 
+    
+  
+    
+   //Aca me quede rellenar con todas las variables
+
+    if  (fnombre!="" && fapellido!="" && ftelefono !="" && femail!="" && fciudad!="" && fprovincia!="" && fcodigopostal!="" && ftarjeta!="" && fnumerotarjeta!="" && fvencimiento!="" && fccv!="" ) {
+
+
+      
+      swal({
+        title: "Compra realizada con éxito",
+        text: "Muchas gracias "+ fnombre +" por su compra el total es: "   + fun(...arraydeprecios)+ " dólares",
+        icon: "success",
+        button: "Aceptar",
+      });
+
+    } 
+    
+  
      
     }
   
   }
-  
+
+
+ 
