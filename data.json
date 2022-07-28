@@ -1,0 +1,10 @@
+  [
+    
+    {"id":1, "nombre":"Inyector","precio": 100, "descripcion":"Inyector descartable para endosocopía","imgurl":"./assests/img/aguja-de-escleroterapia.jpg"},
+
+    {"id":2, "nombre":"Ansa caliente","precio": 200, "descripcion":"Ansa caliente descartable para endosocopía","imgurl":"./assests/img/ansacaliente.jpg"},
+ 
+    {"id":3, "nombre":"Clip endoscópico","precio": 300, "descripcion":"Clip descartable para endosocopía","imgurl":"./assests/img/clip.jpg"}
+
+  
+]

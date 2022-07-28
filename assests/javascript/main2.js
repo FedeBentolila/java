@@ -27,9 +27,9 @@ function displayfinalizarcomprar(){
 
 
 
-//Constructor de productos en venta
+//Constructores
 
-class Producto {
+ class Producto {
     constructor (id, nombre, precio, descripcion, imgurl){
       this.id= id;
       this.nombre = nombre;
@@ -37,172 +37,35 @@ class Producto {
       this.descripcion = descripcion;
       this.imgurl = imgurl;
     }
-  }
+  } 
+
+  class Producto2 {
+    constructor(obj){
+      this.id= obj.id;
+      this.nombre=obj.nombre;
+      this.precio = parseFloat(obj.precio);
+      this.descripcion = obj.descripcion;
+      this.imgurl = obj.imgurl;
+  
+    }
+    }
   
   //Productos en venta
   
   const productos = [];
-  productos.push(new Producto("1","Inyector","100","Inyector descartable para endosocopía","./assests/img/aguja-de-escleroterapia.jpg"))
-  productos.push(new Producto("2","Ansa caliente", "200","Ansa caliente descartable para endosocopía", "./assests/img/ansacaliente.jpg"))
-  productos.push(new Producto("3","Clip endoscópico","300","Clip descartable para endosocopía","./assests/img/clip.jpg",))
-  
-  //Array del Carrito
-  
-  carrito = [];
 
-  
-  //Estado del carrito  segun el local storage
-  const almacenados= JSON.parse(localStorage.getItem("storagecarrito"))
+  //Fetch de JSON
 
-  class Producto2 {
-  constructor(obj){
-    this.id= obj.id;
-    this.nombre=obj.nombre;
-    this.precio = parseFloat(obj.precio);
-    this.descripcion = obj.descripcion;
-    this.imgurl = obj.imgurl;
-
-  }
-  }
-
-
-  if (almacenados!=null) {
-
-    if (testData3==true) {
-      displaybotoncomprar()
-      
+  fetch('data.json')
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    for (const iteradorx of data){
+      productos.push(new Producto2(iteradorx))
     }
 
-  for (const iterador2 of almacenados){
-    carrito.push(new Producto2(iterador2)) 
-  }
-
-  for (const iterador3 of carrito){
-
-
-    //Desestructuro el objeto iterador 3 del carrito para no tener que estar escribiendo ejemplo iterador3.nombre
-    
-    const{id, nombre, precio, descripcion, imgurl}= iterador3
-
-    const testData2 = !!document.getElementById(nombre)  
-
-    let cantidaddelproducto2= 0
-
-    if (testData2==false) {
-     
-     
-      cantidaddelproducto2= 1
-
-      let contenedor = document.createElement("div");
-      contenedor.setAttribute("id",nombre)
-      contenedor.classList.add("card", "mb-3", "cardcarrito")
-      contenedor.innerHTML = 
-      ` <div class="row g-0 justify-content-center align-items-center">
-      <div class="col-md-4">
-        <img src="${imgurl}" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-4">
-      <div class="card-body">
-      <h5 class="card-title">${nombre}</h5>
-      <p id ="precio${nombre}" class="card-text">Precio ${precio} dólares</p>
-      <p id="cantidad${nombre}" class="card-text">Cantidad 1</p>
-      <i id ="trash${nombre}" class="fa-solid fa-trash-can"></i>
-      </div>
-      </div>
-      </div> `;
-      document.getElementById("carrito").appendChild(contenedor)
-
-      
-
-    }else{
-      for (const obj of carrito) {
-        
-        //Operador ternario
-        
-        obj.nombre==nombre? cantidaddelproducto2++ : cantidaddelproducto2
-        //if (obj.nombre == iterador3.nombre) cantidaddelproducto2++;
-      }  
-      console.log(cantidaddelproducto2)
-      console.log(carrito)
-     
-      let precioproducto= document.getElementById("precio"+nombre)
-      precioproducto.innerText=("Precio " + (precio * cantidaddelproducto2) + " dólares")
-      
-      let cantidaddelproductoenhtml= document.getElementById("cantidad"+nombre)
-      cantidaddelproductoenhtml.innerText=("Cantidad " + cantidaddelproducto2)
-
-    }
-
-    let= botontrash= document.getElementById("trash"+nombre)
-    botontrash.onclick=()=>{
-      console.log(cantidaddelproducto2)
-    if (cantidaddelproducto2==1) {
-      carrito= carrito.filter(data=>data.id !=nombre+cantidaddelproducto2);
-      
-      
-      //Quito el local storage
-      localStorage.clear()
-      //Actualizo el local storage
-      guardarlocal("storagecarrito", JSON.stringify(carrito));
-  
-      console.log(carrito)
-      let element= document.getElementById(nombre)
-      element.remove();
-      cantidaddelproducto2=0
-
-      if (testData3==true) {
-        displaybotoncomprar()
-        
-      }
-
-      if(testData4==true){
-        displayfinalizarcomprar ()
-      
-      
-      }
-
-      
-
-
-    }else{
-      carrito= carrito.filter(data=>data.id !=nombre+cantidaddelproducto2);
-      
-      cantidaddelproducto2--
-      //Quito el local storage
-      localStorage.clear()
-      //Actualizo el local storage
-      guardarlocal("storagecarrito", JSON.stringify(carrito));
-  
-      console.log(carrito)
-      let precioproducto= document.getElementById("precio"+nombre)
-      precioproducto.innerText=("Precio " + (precio * cantidaddelproducto2) + " dólares")
-      
-      let cantidaddelproductoenhtml= document.getElementById("cantidad"+nombre)
-      cantidaddelproductoenhtml.innerText=("Cantidad " + cantidaddelproducto2)
-
-      if (testData3==true) {
-        displaybotoncomprar()
-        
-      }
-
-      if(testData4==true){
-        displayfinalizarcomprar ()
-      
-      
-      }
-    }
-  
-  }
-
-  }
-
-  
-
-
-  }
-
-
-  //////////////////////////////////////////
+    console.log(productos)
 
 
   //Chequeo si esta el DIV productos para que en checkoout.html no intente crear las tarjetas de productos y tire error
@@ -376,9 +239,148 @@ if(testData4==true){
 
 
 }
+    
+  });
+
+  //Array del Carrito
+  
+  carrito = [];
+
+  
+  //Estado del carrito  segun el local storage
+  const almacenados= JSON.parse(localStorage.getItem("storagecarrito"))
 
 
+  if (almacenados!=null) {
 
+    if (testData3==true) {
+      displaybotoncomprar()
+      
+    }
+
+  for (const iterador2 of almacenados){
+    carrito.push(new Producto2(iterador2)) 
+  }
+
+  for (const iterador3 of carrito){
+
+
+    //Desestructuro el objeto iterador 3 del carrito para no tener que estar escribiendo ejemplo iterador3.nombre
+    
+    const{id, nombre, precio, descripcion, imgurl}= iterador3
+
+    const testData2 = !!document.getElementById(nombre)  
+
+    let cantidaddelproducto2= 0
+
+    if (testData2==false) {
+     
+     
+      cantidaddelproducto2= 1
+
+      let contenedor = document.createElement("div");
+      contenedor.setAttribute("id",nombre)
+      contenedor.classList.add("card", "mb-3", "cardcarrito")
+      contenedor.innerHTML = 
+      ` <div class="row g-0 justify-content-center align-items-center">
+      <div class="col-md-4">
+        <img src="${imgurl}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-4">
+      <div class="card-body">
+      <h5 class="card-title">${nombre}</h5>
+      <p id ="precio${nombre}" class="card-text">Precio ${precio} dólares</p>
+      <p id="cantidad${nombre}" class="card-text">Cantidad 1</p>
+      <i id ="trash${nombre}" class="fa-solid fa-trash-can"></i>
+      </div>
+      </div>
+      </div> `;
+      document.getElementById("carrito").appendChild(contenedor)
+
+      
+
+    }else{
+      for (const obj of carrito) {
+        
+        //Operador ternario
+        
+        obj.nombre==nombre? cantidaddelproducto2++ : cantidaddelproducto2
+        //if (obj.nombre == iterador3.nombre) cantidaddelproducto2++;
+      }  
+      console.log(cantidaddelproducto2)
+      console.log(carrito)
+     
+      let precioproducto= document.getElementById("precio"+nombre)
+      precioproducto.innerText=("Precio " + (precio * cantidaddelproducto2) + " dólares")
+      
+      let cantidaddelproductoenhtml= document.getElementById("cantidad"+nombre)
+      cantidaddelproductoenhtml.innerText=("Cantidad " + cantidaddelproducto2)
+
+    }
+
+    let= botontrash= document.getElementById("trash"+nombre)
+    botontrash.onclick=()=>{
+      console.log(cantidaddelproducto2)
+    if (cantidaddelproducto2==1) {
+      carrito= carrito.filter(data=>data.id !=nombre+cantidaddelproducto2);
+      
+      
+      //Quito el local storage
+      localStorage.clear()
+      //Actualizo el local storage
+      guardarlocal("storagecarrito", JSON.stringify(carrito));
+  
+      console.log(carrito)
+      let element= document.getElementById(nombre)
+      element.remove();
+      cantidaddelproducto2=0
+
+      if (testData3==true) {
+        displaybotoncomprar()
+        
+      }
+
+      if(testData4==true){
+        displayfinalizarcomprar ()
+      
+      
+      }
+
+
+    }else{
+      carrito= carrito.filter(data=>data.id !=nombre+cantidaddelproducto2);
+      
+      cantidaddelproducto2--
+      //Quito el local storage
+      localStorage.clear()
+      //Actualizo el local storage
+      guardarlocal("storagecarrito", JSON.stringify(carrito));
+  
+      console.log(carrito)
+      let precioproducto= document.getElementById("precio"+nombre)
+      precioproducto.innerText=("Precio " + (precio * cantidaddelproducto2) + " dólares")
+      
+      let cantidaddelproductoenhtml= document.getElementById("cantidad"+nombre)
+      cantidaddelproductoenhtml.innerText=("Cantidad " + cantidaddelproducto2)
+
+      if (testData3==true) {
+        displaybotoncomprar()
+        
+      }
+
+      if(testData4==true){
+        displayfinalizarcomprar ()
+      
+      
+      }
+    }
+  
+  }
+
+  }
+
+  
+  }
 
 
 if (testData4==true) {
@@ -510,15 +512,11 @@ if (testData4==true) {
       fccvcolor.style.backgroundColor="red"
     
     } 
-    
+      
   
-    
-   //Aca me quede rellenar con todas las variables
-
     if  (fnombre!="" && fapellido!="" && ftelefono !="" && femail!="" && fciudad!="" && fprovincia!="" && fcodigopostal!="" && ftarjeta!="" && fnumerotarjeta!="" && fvencimiento!="" && fccv!="" ) {
 
-
-      
+  
       swal({
         title: "Compra realizada con éxito",
         text: "Muchas gracias "+ fnombre +" por su compra el total es: "   + fun(...arraydeprecios)+ " dólares",
@@ -526,9 +524,19 @@ if (testData4==true) {
         button: "Aceptar",
       });
 
+      //Quito el local storage
+      localStorage.clear()
+
+      let element= document.getElementById("carrito")
+      element.remove();
+      cantidaddelproducto2=0
+
+      botonfinalizarcompra.classList.add('d-none')
+
+
+
     } 
     
-  
      
     }
   
