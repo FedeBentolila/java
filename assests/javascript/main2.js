@@ -387,6 +387,8 @@ if (testData4==true) {
     
     botonfinalizarcompra.onclick=()=>{
 
+      //Variables para el formulario
+
       let fnombre= document.getElementById("fnombre").value
       let fapellido= document.getElementById("fapellido").value
       let ftelefono= document.getElementById("ftelefono").value
@@ -435,6 +437,8 @@ if (testData4==true) {
       fnombrecolor.style.backgroundColor="red"
         
       
+    }else{
+      fnombrecolor.style.backgroundColor="white"
     }
     
     if (fapellido=="") {
@@ -442,14 +446,18 @@ if (testData4==true) {
       swal("Atención", "Existen campos incompletos", "error");
       fapellidocolor.style.backgroundColor="red"
     
-    } 
+    } else{
+      fapellidocolor.style.backgroundColor="white"
+    }
 
     if (ftelefono=="") {
 
       swal("Atención", "Existen campos incompletos", "error");
       ftelefonocolor.style.backgroundColor="red"
     
-    } 
+    } else{
+      ftelefonocolor.style.backgroundColor="white"
+    }
 
 
     if (femail=="") {
@@ -457,7 +465,9 @@ if (testData4==true) {
       swal("Atención", "Existen campos incompletos", "error");
       femailcolor.style.backgroundColor="red"
     
-    } 
+    } else{
+      femailcolor.style.backgroundColor="white"
+    }
 
 
     if (fciudad=="") {
@@ -465,14 +475,18 @@ if (testData4==true) {
       swal("Atención", "Existen campos incompletos", "error");
       fciudadcolor.style.backgroundColor="red"
     
-    } 
+    } else{
+      fciudadcolor.style.backgroundColor="white"
+    }
 
     if (fprovincia=="") {
 
       swal("Atención", "Existen campos incompletos", "error");
       fprovinciacolor.style.backgroundColor="red"
     
-    } 
+    } else{
+      fprovinciacolor.style.backgroundColor="white"
+    }
 
 
     if (fcodigopostal=="") {
@@ -480,14 +494,18 @@ if (testData4==true) {
       swal("Atención", "Existen campos incompletos", "error");
       fcodigopostalcolor.style.backgroundColor="red"
     
-    } 
+    } else{
+      fcodigopostalcolor.style.backgroundColor="white"
+    }
 
     if (ftarjeta=="") {
 
       swal("Atención", "Existen campos incompletos", "error");
       ftarjetacolor.style.backgroundColor="red"
     
-    } 
+    } else{
+      ftarjetacolor.style.backgroundColor="white"
+    }
 
 
     if (fnumerotarjeta=="") {
@@ -495,14 +513,18 @@ if (testData4==true) {
       swal("Atención", "Existen campos incompletos", "error");
       fnumerotarjetacolor.style.backgroundColor="red"
     
-    } 
+    } else{
+      fnumerotarjetacolor.style.backgroundColor="white"
+    }
 
     if (fvencimiento=="") {
 
       swal("Atención", "Existen campos incompletos", "error");
       fvencimientocolor.style.backgroundColor="red"
     
-    } 
+    } else{
+      fvencimientocolor.style.backgroundColor="white"
+    }
 
 
 
@@ -511,7 +533,9 @@ if (testData4==true) {
       swal("Atención", "Existen campos incompletos", "error");
       fccvcolor.style.backgroundColor="red"
     
-    } 
+    } else{
+      fccvcolor.style.backgroundColor="white"
+    }
       
   
     if  (fnombre!="" && fapellido!="" && ftelefono !="" && femail!="" && fciudad!="" && fprovincia!="" && fcodigopostal!="" && ftarjeta!="" && fnumerotarjeta!="" && fvencimiento!="" && fccv!="" ) {
